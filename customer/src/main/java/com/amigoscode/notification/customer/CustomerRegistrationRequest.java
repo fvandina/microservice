@@ -1,4 +1,4 @@
-package com.amigoscode.customer;
+package com.amigoscode.notification.customer;
 
 public record CustomerRegistrationRequest(
         String firstName,
