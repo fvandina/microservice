@@ -1,0 +1,16 @@
+server:
+  port: 8761
+
+spring:
+  output:
+    ansi:
+      enabled: always
+
+  application:
+    name: eureka-server
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+
