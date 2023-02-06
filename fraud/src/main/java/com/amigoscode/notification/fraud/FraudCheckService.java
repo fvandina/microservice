@@ -1,4 +1,4 @@
-package com.amigoscode.fraud;
+package com.amigoscode.notification.fraud;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

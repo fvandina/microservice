@@ -1,16 +1,14 @@
-package com.amigoscode.customer;
+package com.amigoscode.notification.customer;
 
-import com.amigoscode.clients.fraud.FraudCheckResponse;
-import com.amigoscode.clients.fraud.FraudClient;
+import com.amigoscode.notification.clients.fraud.FraudCheckResponse;
+import com.amigoscode.notification.clients.fraud.FraudClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 @AllArgsConstructor
 public class CustomerService {
     private final CustomerRepository customerRepository;
-    private final RestTemplate restTemplate;
     private final FraudClient fraudClient;
 
     public void registerCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
@@ -25,15 +23,12 @@ public class CustomerService {
         customerRepository.saveAndFlush(customer);
 
         //todo: check if fraudster
-
-
         FraudCheckResponse fraudCheckResponse = fraudClient.isFrauster(customer.getId());
 
-        if (fraudCheckResponse.isFraudster()){
-            throw  new IllegalStateException("fraudster");
+        if (fraudCheckResponse.isFraudster()) {
+            throw new IllegalStateException("fraudster");
         }
 
-        customerRepository.save(customer);
         //todo: send notification
     }
 }
