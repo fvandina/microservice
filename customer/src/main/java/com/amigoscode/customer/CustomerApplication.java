@@ -1,13 +1,17 @@
-package com.amigoscode.notification.fraud;
+package com.amigoscode.customer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class FraudApplication {
+@EnableFeignClients (
+        basePackages = "com.amigoscode.clients"
+)
+public class CustomerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(FraudApplication.class, args);
+        SpringApplication.run(CustomerApplication.class, args);
     }
 }

@@ -1,4 +1,4 @@
-package com.amigoscode.notification.customer;
+package com.amigoscode.customer;
 
 import com.amigoscode.clients.fraud.FraudCheckResponse;
 import com.amigoscode.clients.fraud.FraudClient;

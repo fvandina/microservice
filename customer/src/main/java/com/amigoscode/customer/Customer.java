@@ -1,4 +1,4 @@
-package com.amigoscode.notification.fraud;
+package com.amigoscode.customer;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,25 +6,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class FraudCheckHistory {
+public class Customer {
     @Id
     @SequenceGenerator(
-            name = "fraud_id_sequence",
-            sequenceName = "fraud_id_sequence"
+            name = "customer_id_sequence",
+            sequenceName = "customer_id_sequence"
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "fraud_id_sequence"
+            generator = "customer_id_sequence"
     )
     private Integer id;
-    private Integer customerId;
-    private Boolean isFraudster;
-    private LocalDateTime createdAt;
+    private String firstName;
+    private String lastName;
+    private String email;
 }

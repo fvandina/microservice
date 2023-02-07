@@ -1,4 +1,4 @@
-package com.amigoscode.notification.fraud;
+package com.amigoscode.fraud;
 
 import com.amigoscode.clients.fraud.FraudCheckResponse;
 import lombok.AllArgsConstructor;
