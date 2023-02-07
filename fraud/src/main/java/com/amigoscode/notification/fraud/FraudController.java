@@ -1,6 +1,6 @@
 package com.amigoscode.notification.fraud;
 
-import com.amigoscode.notification.clients.fraud.FraudCheckResponse;
+import com.amigoscode.clients.fraud.FraudCheckResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ public class FraudController {
     private final FraudCheckService fraudCheckService;
 
     @GetMapping(path = "{customerId}")
-    public FraudCheckResponse isFrauster(
+    public FraudCheckResponse isFraudster(
             @PathVariable("customerId") Integer customerId
     ) {
         boolean isFraudulentCustomer = fraudCheckService.isFraudulentCustomer(customerId);

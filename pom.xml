@@ -10,14 +10,13 @@
     <packaging>pom</packaging>
 
     <name>amigosservices</name>
-    <!-- FIXME change it to the project's website -->
     <url>https://www.amigoscode.com</url>
     <modules>
         <module>customer</module>
         <module>fraud</module>
         <module>eureka-server</module>
         <module>clients</module>
-      <module>notification</module>
+        <module>notification</module>
     </modules>
 
     <properties>
