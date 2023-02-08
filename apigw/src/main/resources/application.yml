@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8083
 
   error:
     include-message: always
@@ -11,22 +11,15 @@ spring:
       enabled: always
 
   application:
-    name: customer
+    name: api-gateway
 
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    username: amigoscode
-    password: password
-    url: jdbc:postgresql://localhost:5432/customer
-
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-    show-sql: true
+  cloud:
+    gateway:
+      routes:
+        - id: customer
+          uri: lb://CUSTOMER
+          predicates:
+            - Path=/api/v1/customers/**
 
 management:
   tracing:
