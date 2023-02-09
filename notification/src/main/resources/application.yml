@@ -28,6 +28,10 @@ spring:
         format_sql: true
     show-sql: true
 
+  rabbitmq:
+    addresses: localhost:5672
+
+
 management:
   tracing:
     sampling:
