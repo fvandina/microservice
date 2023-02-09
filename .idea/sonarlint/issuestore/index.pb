@@ -21,8 +21,6 @@ z
 Jclients/src/main/java/com/amigoscode/clients/fraud/FraudCheckResponse.java,9\1\919e3d5649f468609777689072b39300e9e73013
 s
 Cclients/src/main/java/com/amigoscode/clients/fraud/FraudClient.java,e\1\e1abf2a89aba476b0ee08f6c2de4875cb8655789
-Å
-Qclients/src/main/java/com/amigoscode/clients/notification/NotificationClient.java,5\2\5229d25c9f689409748804d53686b7ba9d9aa393
 Ç
 Rnotification/src/main/java/com/amigoscode/notification/NotificationController.java,e\9\e908b126e3c769231deb8f4e08063ff1b1aa7a07
 Ç

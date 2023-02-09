@@ -47,7 +47,5 @@ public class CustomerService {
                 "internal.exchange",
                 "internal.notification.routing-key"
         );
-//        notificationClient.sendNotification(
-//                notificationRequest);
     }
 }
