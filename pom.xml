@@ -28,7 +28,6 @@
         <spring.boot.maven.plugin.version>3.0.2</spring.boot.maven.plugin.version>
         <spring.boot.dependecies.version>3.0.2</spring.boot.dependecies.version>
         <spring.cloud-version>2022.0.1</spring.cloud-version>
-        <micrometer-tracing.version>1.0.1</micrometer-tracing.version>
         <image>wadminfv/${project.artifactId}:${project.version}</image>
     </properties>
 
@@ -45,13 +44,6 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring.cloud-version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.micrometer</groupId>
-                <artifactId>micrometer-tracing-bom</artifactId>
-                <version>${micrometer-tracing.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -75,8 +67,9 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing</artifactId>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-micrometer</artifactId>
+            <version>12.1</version>
         </dependency>
     </dependencies>
 

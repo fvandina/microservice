@@ -1,7 +1,7 @@
 package com.amigoscode.notification.rabbitmq;
 
+import com.amigoscode.clients.notification.NotificationClient;
 import com.amigoscode.clients.notification.NotificationRequest;
-import com.amigoscode.notification.NotificationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -17,10 +17,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class NotificationConsumer {
 
-    private final NotificationService notificationService;
+    private final NotificationClient notificationClient;
+
     @RabbitListener(queues = "${rabbitmq.queues.notification}")
-    public void consumer(NotificationRequest notificationRequest){
-      log.info("Consumed {} from queue ", notificationRequest);
-      notificationService.send(notificationRequest);
+    public void consumer(NotificationRequest notificationRequest) {
+        log.info("Consumed {} from queue ", notificationRequest);
+        notificationClient.sendNotification(notificationRequest);
     }
 }
