@@ -46,6 +46,32 @@ services:
       - "5672:5672"
       - "15672:15672"
 
+  eureka-server:
+    image: wadminfv/eureka-server:latest
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+    depends_on:
+      - zipkin
+
+  apigw:
+    image: wadminfv/apigw:latest
+    container_name: apigw
+    ports:
+      - "8083:8083"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - EUREKA_SERVER_ADDRESS=http://eureka-server:8761/eureka
+      - ZIPKIN_URL=http://zipkin:9411
+    networks:
+      - spring
+    depends_on:
+      - zipkin
+      - eureka-server
 
 networks:
   postgres:

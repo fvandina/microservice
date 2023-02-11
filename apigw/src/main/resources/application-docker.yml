@@ -33,6 +33,9 @@ logging:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 
 eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: eureka-server
   client:
     serviceUrl:
       defaultZone: http://eureka-server:8761/eureka/

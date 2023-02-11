@@ -7,6 +7,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableFeignClients(
+        basePackages = "com.amigoscode.clients"
+)
 public class FraudApplication {
     public static void main(String[] args) {
         SpringApplication.run(FraudApplication.class, args);

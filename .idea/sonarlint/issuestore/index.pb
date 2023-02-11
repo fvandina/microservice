@@ -1,6 +1,4 @@
 
-B
-docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
 C
 customer/.gitignore,1\c\1c0b8cb6f727f1fb9279d878a92dbceebd89fa10
 x
@@ -17,29 +15,9 @@ B
 clients/.gitignore,9\3\93dad2b33d1749fb9899cbf400207441d1997f7c
 z
 Jclients/src/main/java/com/amigoscode/clients/fraud/FraudCheckResponse.java,9\1\919e3d5649f468609777689072b39300e9e73013
-s
-Cclients/src/main/java/com/amigoscode/clients/fraud/FraudClient.java,e\1\e1abf2a89aba476b0ee08f6c2de4875cb8655789
-Ç
-Rnotification/src/main/java/com/amigoscode/notification/NotificationController.java,e\9\e908b126e3c769231deb8f4e08063ff1b1aa7a07
 Ç
 Rclients/src/main/java/com/amigoscode/clients/notification/NotificationRequest.java,1\b\1bb2470cfa082bef9a38700d4d6b528ecf2f56a8
 Ñ
 Teureka-server/src/main/java/com/amigoscode/eurekaserver/EurekaServerApplication.java,0\3\03ae2f1016d49ae7d26053fd82ee3f3e5b30d4d1
 n
->fraud/src/main/java/com/amigoscode/fraud/FraudApplication.java,d\2\d296bbdbe67cf8b59d1a501e9cfdbdc1bd593e72
-n
 >apigw/src/main/java/com/amigoscode/apigw/ApiGWApplication.java,c\2\c22f21b28c4f08602155e836415f24fb4ddc7810
-
-Onotification/src/main/java/com/amigoscode/notification/NotificationService.java,1\1\110cad223ea2705bc9db7b8b9ee35be452efb483
-~
-Nnotification/src/main/java/com/amigoscode/notification/NotificationConfig.java,6\7\67a6607e8a6052a23f91069a8b952a0b4e20c9d7
-w
-Gcustomer/src/main/java/com/amigoscode/customer/CustomerApplication.java,5\b\5b8854a59dc050352fa684af2f8a0008acc86bb6
-É
-Snotification/src/main/java/com/amigoscode/notification/NotificationApplication.java,c\6\c6f005d05faa11b7d2cd396db4c224f47e3f252f
-â
-Ynotification/src/main/java/com/amigoscode/notification/rabbitmq/NotificationConsumer.java,c\f\cf0141f9c857d79d7725c6498afc0179b02ca693
-Å
-Qclients/src/main/java/com/amigoscode/clients/notification/NotificationClient.java,5\2\5229d25c9f689409748804d53686b7ba9d9aa393
-s
-Ccustomer/src/main/java/com/amigoscode/customer/CustomerService.java,b\7\b7ef8d94b5f51b118133c93359f27383543d7bd0
