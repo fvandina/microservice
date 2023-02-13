@@ -22,6 +22,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
       PGADMIN_CONFIG_SERVER_MODE: 'False'
+      TZ: "America/Guayaquil"
     volumes:
       - pgadmin:/var/lib/pgadmin
     ports:
@@ -33,6 +34,8 @@ services:
   zipkin:
     image: openzipkin/zipkin
     container_name: zipkin
+    environment:
+      TZ: "America/Guayaquil"
     ports:
       - "9411:9411"
     networks:
@@ -41,6 +44,10 @@ services:
   rabbitmq:
     image: rabbitmq:3.11.8-management-alpine
     container_name: rabbitmq
+    environment:
+      TZ: "America/Guayaquil"
+    networks:
+      - spring
     restart: always
     ports:
       - "5672:5672"
@@ -52,7 +59,8 @@ services:
     ports:
       - "8761:8761"
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
+      SPRING_PROFILES_ACTIVE: "docker"
+      TZ: "America/Guayaquil"
     networks:
       - spring
     depends_on:
@@ -64,14 +72,72 @@ services:
     ports:
       - "8083:8083"
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      - EUREKA_SERVER_ADDRESS=http://eureka-server:8761/eureka
-      - ZIPKIN_URL=http://zipkin:9411
+      SPRING_PROFILES_ACTIVE: "docker"
+      EUREKA_SERVER_ADDRESS: "http://eureka-server:8761/eureka"
+      ZIPKIN_URL: "http://zipkin:9411"
+      TZ: "America/Guayaquil"
     networks:
       - spring
     depends_on:
       - zipkin
       - eureka-server
+
+  customer:
+    image: wadminfv/customer:latest
+    container_name: customer
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: "docker"
+      EUREKA_SERVER_ADDRESS: "http://eureka-server:8761/eureka"
+      ZIPKIN_URL: "http://zipkin:9411"
+      TZ: "America/Guayaquil"
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - eureka-server
+      - postgres
+      - rabbitmq
+
+  fraud:
+    image: wadminfv/fraud:latest
+    container_name: fraud
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: "docker"
+      EUREKA_SERVER_ADDRESS: "http://eureka-server:8761/eureka"
+      ZIPKIN_URL: "http://zipkin:9411"
+      TZ: "America/Guayaquil"
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - eureka-server
+      - postgres
+      - rabbitmq
+
+  notification:
+    image: wadminfv/notification:latest
+    container_name: notification
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_PROFILES_ACTIVE: "docker"
+      EUREKA_SERVER_ADDRESS: "http://eureka-server:8761/eureka"
+      ZIPKIN_URL: "http://zipkin:9411"
+      TZ: "America/Guayaquil"
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - eureka-server
+      - postgres
+      - rabbitmq
 
 networks:
   postgres:

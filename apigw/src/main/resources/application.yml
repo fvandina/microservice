@@ -34,7 +34,6 @@ logging:
 
 eureka:
   instance:
-    prefer-ip-address: true
     hostname: localhost
   client:
     serviceUrl:
