@@ -14,7 +14,6 @@ services:
     networks:
       - postgres
     restart: unless-stopped
-
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
@@ -30,7 +29,6 @@ services:
     networks:
       - postgres
     restart: unless-stopped
-
   zipkin:
     image: openzipkin/zipkin
     container_name: zipkin
@@ -40,7 +38,6 @@ services:
       - "9411:9411"
     networks:
       - spring
-
   rabbitmq:
     image: rabbitmq:3.11.8-management-alpine
     container_name: rabbitmq
@@ -51,7 +48,6 @@ services:
       - "15672:15672"
     networks:
       - spring
-
   eureka-server:
     image: wadminfv/eureka-server:latest
     container_name: eureka-server
@@ -63,7 +59,6 @@ services:
       - spring
     depends_on:
       - zipkin
-
   apigw:
     image: wadminfv/apigw:latest
     container_name: apigw
@@ -76,7 +71,6 @@ services:
     depends_on:
       - zipkin
       - eureka-server
-
   customer:
     image: wadminfv/customer:latest
     container_name: customer
@@ -93,7 +87,6 @@ services:
       - apigw
       - postgres
       - rabbitmq
-
   fraud:
     image: wadminfv/fraud:latest
     container_name: fraud
@@ -110,7 +103,6 @@ services:
       - apigw
       - postgres
       - rabbitmq
-
   notification:
     image: wadminfv/notification:latest
     container_name: notification
@@ -127,13 +119,11 @@ services:
       - apigw
       - postgres
       - rabbitmq
-
 networks:
   postgres:
     driver: bridge
   spring:
     driver: bridge
-
 volumes:
   postgres:
   pgadmin:
