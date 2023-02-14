@@ -29,10 +29,14 @@ spring:
     show-sql: true
 
   zipkin:
-    base-url: http://zipkin:9411
-    
+    baseUrl: http://zipkin:9411
+    sender:
+      type: rabbit
+  
   rabbitmq:
     addresses: rabbitmq:5672
+    username: guest
+    password: guest
 
 management:
   tracing:
@@ -45,7 +49,7 @@ logging:
 
 eureka:
   instance:
-    hostname: eureka-server
+    preferIpAddress: true
   client:
     serviceUrl:
       defaultZone: http://eureka-server:8761/eureka/

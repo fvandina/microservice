@@ -1,7 +1,7 @@
 services:
   postgres:
     container_name: postgres
-    image: postgres
+    image: postgres:14
     environment:
       POSTGRES_USER: amigoscode
       POSTGRES_PASSWORD: password
@@ -34,8 +34,8 @@ services:
   zipkin:
     image: openzipkin/zipkin
     container_name: zipkin
-    environment:
-      TZ: "America/Guayaquil"
+    #environment:
+    #  TZ: "America/Guayaquil"
     ports:
       - "9411:9411"
     networks:
@@ -44,14 +44,13 @@ services:
   rabbitmq:
     image: rabbitmq:3.11.8-management-alpine
     container_name: rabbitmq
-    environment:
-      TZ: "America/Guayaquil"
-    networks:
-      - spring
-    restart: always
+    #environment:
+    #  TZ: "America/Guayaquil"
     ports:
       - "5672:5672"
       - "15672:15672"
+    networks:
+      - spring
 
   eureka-server:
     image: wadminfv/eureka-server:latest
@@ -59,8 +58,7 @@ services:
     ports:
       - "8761:8761"
     environment:
-      SPRING_PROFILES_ACTIVE: "docker"
-      TZ: "America/Guayaquil"
+      - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
     depends_on:
@@ -72,10 +70,7 @@ services:
     ports:
       - "8083:8083"
     environment:
-      SPRING_PROFILES_ACTIVE: "docker"
-      EUREKA_SERVER_ADDRESS: "http://eureka-server:8761/eureka"
-      ZIPKIN_URL: "http://zipkin:9411"
-      TZ: "America/Guayaquil"
+      - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
     depends_on:
@@ -88,16 +83,14 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_PROFILES_ACTIVE: "docker"
-      EUREKA_SERVER_ADDRESS: "http://eureka-server:8761/eureka"
-      ZIPKIN_URL: "http://zipkin:9411"
-      TZ: "America/Guayaquil"
+      - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
       - postgres
     depends_on:
       - zipkin
       - eureka-server
+      - apigw
       - postgres
       - rabbitmq
 
@@ -107,16 +100,14 @@ services:
     ports:
       - "8081:8081"
     environment:
-      SPRING_PROFILES_ACTIVE: "docker"
-      EUREKA_SERVER_ADDRESS: "http://eureka-server:8761/eureka"
-      ZIPKIN_URL: "http://zipkin:9411"
-      TZ: "America/Guayaquil"
+      - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
       - postgres
     depends_on:
       - zipkin
       - eureka-server
+      - apigw
       - postgres
       - rabbitmq
 
@@ -126,16 +117,14 @@ services:
     ports:
       - "8082:8082"
     environment:
-      SPRING_PROFILES_ACTIVE: "docker"
-      EUREKA_SERVER_ADDRESS: "http://eureka-server:8761/eureka"
-      ZIPKIN_URL: "http://zipkin:9411"
-      TZ: "America/Guayaquil"
+      - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
       - postgres
     depends_on:
       - zipkin
       - eureka-server
+      - apigw
       - postgres
       - rabbitmq
 
